@@ -1,0 +1,19 @@
+#!/bin/bash
+set -x
+
+SCRIPTDIR=$(dirname $0)
+
+install -D -g root -o root -m 0644 ${SCRIPTDIR}/init.vim /root/.config/nvim/init.vim
+install -D -g root -o root -m 0755 ${SCRIPTDIR}/nvim.appimage /opt/nvim.appimage
+install -D -g root -o root ${SCRIPTDIR}/plugins/plugged/* /root/.config/nvim/plugged
+install -D -g root -o root ${SCRIPTDIR}/plugins/autoload/* /root/.config/nvim/autoload
+install -D -g root -o root ${SCRIPTDIR}/fzf/* /root/.fzf
+
+rm -rf /opt/squashfs-root
+/opt/nvim.appimage --appimage-extract
+rm -rf /opt/neovim
+mv  /opt/squashfs-root /opt/neovim
+find /opt/neovim/ -type d -exec chmod go+rx {} \;
+ln -s /opt/neovim/AppRun /usr/local/bin/nvim
+ln -s /opt/neovim/AppRun /usr/bin/nvim
+/root/.fzf/install --all
