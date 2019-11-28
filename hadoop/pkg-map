@@ -1,0 +1,12 @@
+{
+    "family": {
+        "redhat": {
+            "mysql-connector-java_package": "mysql-connector-jave",
+            "java-jdk_package": "java-1.8.0-openjdk-devel"
+        }
+    },
+        "default": {
+            "mysql-connector-java_package": "mysql-connector-java",
+            "java-jdk_package": "java-1.8.0-openjdk-devel"
+        }
+}
