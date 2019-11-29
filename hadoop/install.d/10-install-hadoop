@@ -1,22 +1,24 @@
 #!/bin/bash
 set -e
 
-yum install -y java-1.8.0-openjdk-devel
-yum install -y mysql-connector-java
+yum install -y wget java-1.8.0-openjdk-devel mysql-connector-java mysql-server
 
 wget http://apache.cs.utah.edu/hadoop/common/current/hadoop-3.1.3.tar.gz -P /tmp
 wget http://www.apache.org/dist/mahout/0.13.0/apache-mahout-distribution-0.13.0.tar.gz -P /tmp
 wget http://ftp.twaren.net/Unix/Web/apache/hive/hive-3.1.2/apache-hive-3.1.2-bin.tar.gz -P /tmp
 wget http://ftp.tc.edu.tw/pub/Apache/spark/spark-2.4.4/spark-2.4.4-bin-hadoop2.7.tgz -P /tmp
 
+wget http://ftp.twaren.net/Unix/Web/apache/zookeeper/zookeeper-3.5.6/apache-zookeeper-3.5.6-bin.tar.gz -P /tmp
+
 tar zxvf /tmp/hadoop-3.1.3.tar.gz -C /opt
 tar zxvf /tmp/apache-mahout-distribution-0.13.0.tar.gz -C /opt
 tar zxvf /tmp/apache-hive-3.1.2-bin.tar.gz -C /opt
 tar zxvf /tmp/spark-2.4.4-bin-hadoop2.7.tgz -C /opt
+tar zxvf /tmp/apache-zookeeper-3.5.6-bin.tar.gz -C /opt
 
 ln -s /opt/hadoop-3.1.3 /opt/hadoop
 ln -s /opt/apache-mahout-distribution-0.13.0 /opt/mahout
 ln -s /opt/apache-hive-3.1.2 /opt/hive
 ln -s /opt/spark-2.4.4-bin-hadoop2.7 /opt/spark
-
+ln -s /opt/apach-zookeeper-3.5.6-bin /opt/zookeeper
 
